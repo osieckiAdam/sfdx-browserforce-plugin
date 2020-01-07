@@ -25,6 +25,7 @@ export default class Browserforce {
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
       headless: !(process.env.BROWSER_DEBUG === 'true')
     });
+    await this.org.refreshAuth();
     await this.openPage(
       `secur/frontdoor.jsp?sid=${
         this.org.getConnection().accessToken
