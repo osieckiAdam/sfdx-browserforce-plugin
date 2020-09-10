@@ -145,6 +145,20 @@ Here is a full blown example showing most of the supported settings in action:
 - `BROWSERFORCE_RETRY_MAX_RETRIES`: number of retries on failures opening a page (default: `4`)
 - `BROWSERFORCE_RETRY_TIMEOUT_MS`: initial time between retries in exponential mode (default: `4000`)
 
+# Debugging
+
+To show debug output in the terminal, set the environment variable `DEBUG` to `sfdx:Browserforce*`, e.g.
+
+```
+DEBUG="sfdx:Browserforce*" sfdx browserforce:apply ...
+```
+
+To disable headless mode and watching the actions in the browser, set the environment variable `BROWSER_DEBUG` to `true`, e.g.
+
+```
+BROWSER_DEBUG=true sfdx browserforce:apply ...
+```
+
 # Contributing
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for getting started.

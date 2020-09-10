@@ -89,11 +89,8 @@ export default class CriticalUpdates extends BrowserforcePlugin {
         (button: HTMLButtonElement) => button.disabled
       );
       if (isDisabled) {
-        // TODO: use this.logger.warn once plugins have loggers
-        console.warn(
-          `Warning: Critical Update '${update.name}' cannot be set to ${
-            update.active
-          }`
+        this.browserforce.logger.warn(
+          `Critical Update '${update.name}' cannot be set to ${update.active}`
         );
         continue;
       } else {

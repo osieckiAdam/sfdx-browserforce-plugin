@@ -8,7 +8,7 @@ const messages = core.Messages.loadMessages(
   'browserforce'
 );
 
-export default class BrowserforcePlanCommand extends BrowserforceCommand {
+export default class BrowserforcePlan extends BrowserforceCommand {
   public static description = messages.getMessage('planCommandDescription');
 
   public static examples = [

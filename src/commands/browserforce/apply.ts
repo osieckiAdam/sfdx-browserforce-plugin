@@ -22,7 +22,6 @@ export default class BrowserforceApply extends BrowserforceCommand {
 
   // tslint:disable-next-line:no-any
   public async run(): Promise<any> {
-    const logger = await core.Logger.root();
     this.ux.log(
       `Applying definition file ${
         this.flags.definitionfile
@@ -40,7 +39,7 @@ export default class BrowserforceApply extends BrowserforceCommand {
         throw err;
       }
       this.ux.stopSpinner();
-      logger.debug(`generating action for driver ${driver.name}`);
+      this.logger.debug(`generating action for driver ${driver.name}`);
       const action = instance.diff(state, setting.value);
       this.ux.stopSpinner();
       if (action && Object.keys(action).length) {

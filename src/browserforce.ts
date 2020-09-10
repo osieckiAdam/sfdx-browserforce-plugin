@@ -91,9 +91,11 @@ export default class Browserforce {
         );
         await page.setViewport({ width: 1024, height: 768 });
         const url = `${this.getInstanceUrl()}/${urlPath}`;
+        this.logger.debug(`opening URL: ${url}`);
         const parsedUrl = parse(urlPath);
         const response = await page.goto(url, options);
         if (response) {
+          this.logger.debug(`redirected to URL: ${response.url()}`);
           if (!response.ok()) {
             await this.throwPageErrors(page);
             throw new Error(`${response.status()}: ${response.statusText()}`);
@@ -122,13 +124,9 @@ export default class Browserforce {
               throw new Error('frontdoor error');
             } else {
               // the url is not as expected
-              const redactedUrl = response
-                .url()
-                .replace(/sid=(.*)/, 'sid=<REDACTED>')
-                .replace(/sid%3D(.*)/, 'sid=<REDACTED>');
               if (this.logger) {
                 this.logger.warn(
-                  `expected ${this.getInstanceUrl()} or ${this.getLightningUrl()} but got: ${redactedUrl}`
+                  `expected ${this.getInstanceUrl()} or ${this.getLightningUrl()} but got: ${response.url()}`
                 );
                 this.logger.warn('refreshing auth...');
               }
