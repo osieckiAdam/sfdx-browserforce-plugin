@@ -10,7 +10,7 @@ const SELECTORS = {
 };
 
 export default class ActivitySettings extends BrowserforcePlugin {
-  public async retrieve() {
+  public async retrieve(): Promise<any> {
     const page = await this.browserforce.openPage(PATHS.BASE, {
       waitUntil: ['load', 'domcontentloaded', 'networkidle0']
     });
@@ -24,7 +24,7 @@ export default class ActivitySettings extends BrowserforcePlugin {
     return response;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     if (config.allowUsersToRelateMultipleContactsToTasksAndEvents === false) {
       throw new Error(
         '`allowUsersToRelateMultipleContactsToTasksAndEvents` can only be disabled with help of the salesforce.com Support team'
@@ -36,7 +36,7 @@ export default class ActivitySettings extends BrowserforcePlugin {
     await page.waitForSelector(SELECTORS.MANY_WHO_PREF_INPUT);
     await page.$eval(
       SELECTORS.MANY_WHO_PREF_INPUT,
-      (e: HTMLInputElement, v) => {
+      (e: HTMLInputElement, v: boolean) => {
         e.checked = v;
       },
       config.allowUsersToRelateMultipleContactsToTasksAndEvents

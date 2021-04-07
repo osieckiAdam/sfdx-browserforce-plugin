@@ -33,7 +33,7 @@ export default class BrowserforceCommand extends SfdxCommand {
   protected bf: Browserforce;
   protected settings: any[];
 
-  public async init() {
+  public async init(): Promise<void> {
     await super.init();
     const definition = await core.fs.readJson(
       path.resolve(this.flags.definitionfile)
@@ -50,7 +50,7 @@ export default class BrowserforceCommand extends SfdxCommand {
     throw new Error('BrowserforceCommand should not be run directly');
   }
 
-  public async finally(err: any) {
+  public async finally(err: any): Promise<void> {
     this.ux.stopSpinner();
     if (this.bf) {
       this.ux.startSpinner('logging out');

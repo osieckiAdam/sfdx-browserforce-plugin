@@ -22,12 +22,12 @@ export default class LoginAccessPolicies extends BrowserforcePlugin {
     return response;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const page = await this.browserforce.openPage(PATHS.BASE);
     await page.waitForSelector(SELECTORS.ENABLED);
     await page.$eval(
       SELECTORS.ENABLED,
-      (e: HTMLInputElement, v) => {
+      (e: HTMLInputElement, v: boolean) => {
         e.checked = v;
       },
       config.administratorsCanLogInAsAnyUser

@@ -37,7 +37,7 @@ export default class CustomerPortalEnable extends BrowserforcePlugin {
       await page.waitForSelector(SELECTORS.ENABLED);
       await page.$eval(
         SELECTORS.ENABLED,
-        (e: HTMLInputElement, v) => {
+        (e: HTMLInputElement, v: boolean) => {
           e.checked = v;
         },
         plan

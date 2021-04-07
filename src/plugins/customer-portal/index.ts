@@ -52,7 +52,7 @@ export default class CustomerPortal extends BrowserforcePlugin {
     return removeEmptyValues(response);
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     if (config.enabled !== undefined) {
       const pluginEnable = new CustomerPortalEnable(
         this.browserforce,

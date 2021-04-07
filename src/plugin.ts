@@ -10,8 +10,8 @@ export abstract class BrowserforcePlugin {
     this.browserforce = browserforce;
     this.org = org;
   }
-  public abstract retrieve(definition?): Promise<any>;
-  public diff(state, definition) {
+  public abstract retrieve(definition?: any): Promise<any>;
+  public diff(state, definition): any {
     return jsonMergePatch.generate(state, definition);
   }
   public abstract apply(plan: JSON): Promise<any>;

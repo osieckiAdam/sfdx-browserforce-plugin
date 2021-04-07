@@ -45,7 +45,7 @@ export default class RecordTypes extends BrowserforcePlugin {
     return response;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const conn = this.org.getConnection();
     const recordTypeFileProperties = await listRecordTypes(conn);
     const recordTypes = await queryRecordTypes(conn);

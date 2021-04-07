@@ -29,7 +29,7 @@ export default class HighVelocitySalesSettings extends BrowserforcePlugin {
     return result;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     if (config.setUpAndEnable) {
       const page = new HighVelocitySalesSetupPage(
         await this.browserforce.openPage(HighVelocitySalesSetupPage.getUrl())

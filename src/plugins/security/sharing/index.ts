@@ -25,7 +25,7 @@ export default class Sharing extends BrowserforcePlugin {
     };
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const page = await this.browserforce.openPage(PATHS.BASE);
     await page.waitForSelector(SELECTORS.EXTERNAL_SHARING_MODEL_BUTTON);
     page.on('dialog', async dialog => {

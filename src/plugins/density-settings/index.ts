@@ -22,7 +22,7 @@ const domGetPickerItemInputs = () => {
 };
 
 export default class DensitySettings extends BrowserforcePlugin {
-  public async retrieve() {
+  public async retrieve(): Promise<any> {
     const response = {
       density: ''
     };
@@ -49,7 +49,7 @@ export default class DensitySettings extends BrowserforcePlugin {
     return response;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const page = await this.browserforce.openPage(PATHS.BASE, {
       waitUntil: ['load', 'domcontentloaded', 'networkidle0']
     });

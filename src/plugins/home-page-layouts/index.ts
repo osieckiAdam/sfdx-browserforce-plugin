@@ -67,7 +67,7 @@ export default class HomePageLayouts extends BrowserforcePlugin {
     return jsonMergePatch.generate(source, target);
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const profilesList = config.homePageLayoutAssignments
       .map(assignment => {
         return `'${assignment.profile}'`;

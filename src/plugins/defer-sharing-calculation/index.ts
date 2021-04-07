@@ -33,7 +33,7 @@ export default class DeferSharingCalculation extends BrowserforcePlugin {
     };
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const page = await this.browserforce.openPage(PATHS.BASE);
     const button = config.suspend
       ? SELECTORS.SUSPEND_BUTTON

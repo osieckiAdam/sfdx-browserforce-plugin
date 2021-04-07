@@ -41,7 +41,7 @@ export default class FolderSharing extends BrowserforcePlugin {
     return response;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     if (config.enableEnhancedFolderSharing === false) {
       throw new Error(
         '`enableEnhancedFolderSharing` cannot be disabled once enabled'
@@ -51,7 +51,7 @@ export default class FolderSharing extends BrowserforcePlugin {
     await page.waitForSelector(SELECTORS.ENABLE_CHECKBOX);
     await page.$eval(
       SELECTORS.ENABLE_CHECKBOX,
-      (e: HTMLInputElement, v) => {
+      (e: HTMLInputElement, v: boolean) => {
         e.checked = v;
       },
       config.enableEnhancedFolderSharing

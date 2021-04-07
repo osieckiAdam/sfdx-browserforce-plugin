@@ -82,7 +82,7 @@ export default class Picklists extends BrowserforcePlugin {
     return removeEmptyValues(changes);
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     const conn = this.org.getConnection();
     if (config.picklistValues) {
       const fileProperties = await listMetadata(

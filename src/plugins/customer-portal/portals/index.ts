@@ -162,7 +162,7 @@ export default class CustomerPortalSetup extends BrowserforcePlugin {
     return response;
   }
 
-  public async apply(config) {
+  public async apply(config): Promise<void> {
     for (const portal of config) {
       if (portal.id) {
         // everything that can be changed using the url
